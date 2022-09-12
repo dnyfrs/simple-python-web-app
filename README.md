@@ -21,6 +21,10 @@ A simple web service responds HTTP GET requests and returns a JSON containing:
 - Python 3.10.7
 - Flask 2.2.2
 - Docker 20.10.17
+- Minikube v1.26.1
+- Kubernetes v1.24.3
+- Prometheus v2.31.1
+
 ### Bootstrap
 #### Unix-like (macOS/Linux)
 1. Run the script using the example below:  
