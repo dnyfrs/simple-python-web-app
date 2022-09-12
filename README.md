@@ -16,3 +16,8 @@ A simple web service responds HTTP GET requests and returns a JSON containing:
     }
     ```
   </details>
+## Technology
+- Alpine 3.16
+- Python 3.10.7
+- Flask 2.2.2
+- Docker 20.10.17
