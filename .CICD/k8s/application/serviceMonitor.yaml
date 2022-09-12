@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/component: simple-python-web-app
+    app.kubernetes.io/name: simple-python-web-app
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: 8.5.5
+  name: simple-python-web-app
+  namespace: monitoring
+spec:
+  endpoints:
+  - interval: 15s
+    port: default
+    path: "/metrics"
+    honorLabels: true
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      app: simple-python-web-app

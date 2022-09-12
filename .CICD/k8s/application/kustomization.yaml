@@ -1,0 +1,7 @@
+namespace: application
+
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+  - nginx.virtualserver.yaml

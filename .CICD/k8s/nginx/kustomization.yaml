@@ -1,0 +1,13 @@
+namespace: nginx-ingress
+
+resources:
+  - ns-and-sa.yaml
+  - rbac.yaml
+  - default-server-secret.yaml
+  - nginx-config.yaml
+  - ingress-class.yaml
+  - k8s.nginx.org_virtualservers.yaml
+  - k8s.nginx.org_virtualserverroutes.yaml
+  - k8s.nginx.org_transportservers.yaml
+  - k8s.nginx.org_policies.yaml
+  - nginx-ingress.yaml

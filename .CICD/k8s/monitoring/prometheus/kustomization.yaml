@@ -1,0 +1,10 @@
+commonLabels:
+  app: prometheus
+
+resources:
+  - server/cm.yaml
+  - server/service.yaml
+  - server/sts.yaml
+  - server/serviceaccount.yaml
+  - server/clusterrole.yaml
+  - server/clusterrolebinding.yaml

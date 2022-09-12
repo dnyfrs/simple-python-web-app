@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: simple-python-web-app
+  name: simple-python-web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simple-python-web-app
+  template:
+    metadata:
+      labels:
+        app: simple-python-web-app
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/path: '/metrics'
+        prometheus.io/port: '5000'
+    spec:
+      containers:
+      - image: localhost:5000/simple-python-web-app:latest
+        name: simple-python-web-app
+        resources:
+          requests:
+            cpu: 200m
+            memory: 200Mi
+          limits:
+            cpu: 200m
+            memory: 200Mi
+        ports:
+          - protocol: TCP
+            containerPort: 5000
+            name: default
+        imagePullPolicy: Always

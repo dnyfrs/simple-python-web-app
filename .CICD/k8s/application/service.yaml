@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-python-web-app
+  labels:
+      app.kubernetes.io/component: controller
+      app.kubernetes.io/name: prometheus-operator
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 0.57.0
+      app: simple-python-web-app
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/path: '/metrics'
+    prometheus.io/port: '5000'
+spec:
+  selector:
+    app: simple-python-web-app
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      name: default

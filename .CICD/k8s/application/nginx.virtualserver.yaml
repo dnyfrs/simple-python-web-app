@@ -1,0 +1,21 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: simple-ingress
+spec:
+  host: 'simple.info'
+  ingressClassName: nginx
+  upstreams:
+  - name: simple-python-web-app
+    service: simple-python-web-app
+    port: 5000
+  routes:
+  - path: /
+    action:
+      pass: simple-python-web-app
+  - path: /metrics
+    action:
+      return:
+        code: 200
+        type: text/plain
+        body: "Hello World\n"

@@ -55,3 +55,19 @@ Docker is used to develop and test the application
 2. Run the built image  
    `docker run --name simple-web-app -p 5000:5000 simple-python-web-app:development`
 3. Application will start to serve on port `5000` and can be accessed using this URL: http://127.0.0.1:5000
+
+### Deployment
+
+#### minikube
+1. Build the docker image
+   `docker build --tag simple-python-web-app:production -f .CICD/docker/production.Dockerfile .`
+2. Tag the production image for docker registry
+   `docker tag simple-python-web-app:production localhost:5000/simple-python-web-app`
+3. Push the image
+   `docker push localhost:5000/simple-python-web-app`
+   <details>
+   <summary>Note</summary>
+
+      You can use the deployment script `./.CICD/deploy.k8s.sh`
+   </details>
+4. Visit http://simple.info address in your favourite browser

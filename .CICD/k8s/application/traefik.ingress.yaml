@@ -1,0 +1,19 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: simpleingressroute
+  namespace: application
+  annotations:
+    nginx.ingress.kubernetes.io/server-snippet: |
+      location ~* "/metrics" {
+          deny all;
+          return 403;
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`localhost`)
+    kind: Rule
+    services:
+    - name: simple-service
+      port: 80
