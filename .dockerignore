@@ -1,0 +1,9 @@
+.CICD
+.git
+venv/
+.idea/
+__pycache__
+.py[cod]
+.dockerignore
+.gitignore
+README.md
