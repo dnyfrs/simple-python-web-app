@@ -21,6 +21,33 @@ A simple web service responds HTTP GET requests and returns a JSON containing:
 - Python 3.10.7
 - Flask 2.2.2
 - Docker 20.10.17
+### Bootstrap
+#### Unix-like (macOS/Linux)
+1. Run the script using the example below:  
+   `./.CICD/local/NIX/bootstrap.sh`
+2. Run the command below to connect LoadBalancer services
+   `minikube --log_file tunnel.log tunnel`
+    1. This script might ask you for `sudo` password if enabled in the system, please enter your user password and continue
+    2. This command will display an output like the example below:
+       ```
+       Status:
+            machine: minikube
+            pid: 46831
+            route: 10.96.0.0/12 -> 192.168.39.81
+            minikube: Running
+            services: []
+         errors: 
+                     minikube: no errors
+                     router: no errors
+                     loadbalancer emulator: no errors
+      ```  
+
+3. Application responds to requests using the **simple.info** domain.  
+   Use the IP address in step `2.2`, `192.168.39.81` in the example, to punch a name record in `/etc/hosts` file
+   ```/etc/hosts
+   192.168.39.81 simple.info
+   ```
+
 ### Development
 Docker is used to develop and test the application
 1. Simply build the docker image  
