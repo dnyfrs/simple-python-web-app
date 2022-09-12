@@ -15,5 +15,7 @@ fi
 is_minikube_running="$(minikube status -o json | jq '.Host')"
 [[ "${is_minikube_running}" == '"Running"' ]] && echo "[INFO] minikube is already in running state." || minikube start --cpus 4 --addons registry --insecure-registry "10.0.0.0/24"
 
+mkdir logs
+
 kubectl port-forward --namespace kube-system service/registry 5000:80 > logs/registry.log 2>&1 &
 
